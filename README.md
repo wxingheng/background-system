@@ -68,5 +68,5 @@ npm run build
 *******************
 [react]:https://github.com/facebook/react
 [dva]:https://github.com/dvajs/dva
-[dva]:https://github.com/nuysoft/Mock
+[mock]:https://github.com/nuysoft/Mock
 [MIT]:https://tldrlegal.com/license/mit-license
