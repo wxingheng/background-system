@@ -1,23 +1,29 @@
 html {
+  margin: 0;
+  padding: 0;
+  border: 0;
+
+  ul, li, img, div {
     margin: 0;
     padding: 0;
     border: 0;
+  }
 
-    & > body {
-        margin: 0;
-        padding: 0;
-        border: 0;
-        overflow-x: hidden;
+  & > body {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    overflow-x: hidden;
 
-        ul, li {
-            list-style: none;
-        }
-
-        a:hover {
-            text-decoration: none;
-            cursor: pointer;
-        }
+    ul, li {
+      list-style: none;
     }
+
+    a:hover {
+      text-decoration: none;
+      cursor: pointer;
+    }
+  }
 }
 
 .ml-10 {

@@ -14,3 +14,7 @@
 @mixin transition($value...) {
   @include prefix(transition, $value);
 }
+
+@mixin transform($value...) {
+  @include prefix(transform, $value);
+}

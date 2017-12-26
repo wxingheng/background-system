@@ -54,10 +54,29 @@ const Topics = ({ match }) => (
     </div>
 );
 
-class BasicExample extends Component {
+class BaseRouter extends Component {
     constructor() {
         super();
         this.handleOpen = this.handleOpen.bind(this);
+        this.handleSelected = this.handleSelected.bind(this);
+        this.routerConfig = [
+            {
+                header: 'Home',
+                items: [
+                    {name: 'home', path: '/'},
+                    {name: 'about', path: '/about'},
+                    {name: 'topics', path: '/topics'}
+                ]
+            },
+            {
+                header: 'Copy',
+                items: [
+                    {name: 'home', path: '/'},
+                    {name: 'about', path: '/about'},
+                    {name: 'topics', path: '/topics'}
+                ]
+            }
+        ];
     }
 
     handleOpen(e) {
@@ -70,27 +89,39 @@ class BasicExample extends Component {
         }
     }
 
-    
+    handleSelected(e) {
+        let target = e.target,
+            selectedElement = document.querySelectorAll('.menu-item-selected');
+
+        if (target.className.indexOf('menu-item-selected') < 0.5) {
+            Array.from(selectedElement);
+            selectedElement.forEach((elem) => elem.className = elem.className.replace(/menu-item-selected/g, '').trim());
+            target.className = target.className + ' menu-item-selected';
+        }
+    }
 
     render() {
+        let router = this.routerConfig.map((elem, index) =>
+            <li className="menu-submenu menu-close" key={index}>
+                <div className="menu-submenu-title" onClick={this.handleOpen}>
+                    <span>
+                        <i className="fa fa-life-ring"></i>
+                        <span className="ml-10">{elem.header}</span>
+                    </span>
+                    <i className="fa fa-chevron-down menu-submenu-arrow"></i>
+                </div>
+                <ul className="menu-sub" style={{height: (elem.items.length * 44) + 'px'}}>
+                    {elem.items.map((elementSub, indexSub) => <li key={indexSub}><Link className="menu-sub-item" onClick={this.handleSelected} to={elementSub.path}>{elementSub.name}</Link></li>)}
+                </ul>
+            </li>
+        );
+
         return (
             <Router>
                 <div>
                     <div className="menu-container">
                         <ul className="menu">
-                            <li className="menu-submenu menu-close">
-                                <div className="menu-submenu-title" onClick={this.handleOpen}>
-                                <span>
-                                    <i className="fa fa-life-ring"></i>
-                                    <span className="ml-10"><Link to="/">Home</Link></span>
-                                </span>
-                                    <i className="fa fa-chevron-down menu-submenu-arrow"></i>
-                                </div>
-                                <ul className="ant-menu-sub">
-                                    <li><Link to="/about">About</Link></li>
-                                    <li><Link to="/topics">Topics</Link></li>
-                                </ul>
-                            </li>
+                            {router}
                         </ul>
                     </div>
                     <hr/>
@@ -103,4 +134,4 @@ class BasicExample extends Component {
         )
     }
 }
-export default BasicExample;
+export default BaseRouter;

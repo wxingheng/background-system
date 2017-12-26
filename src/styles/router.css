@@ -12,21 +12,54 @@
         height: 40px;
         line-height: 40px;
         color: rgba(0, 0, 0, 0.65); }
-        .menu-container > .menu .menu-submenu .menu-submenu-title a {
-          color: rgba(0, 0, 0, 0.65); }
+        .menu-container > .menu .menu-submenu .menu-submenu-title:hover {
+          color: #1890ff; }
         .menu-container > .menu .menu-submenu .menu-submenu-title .menu-submenu-arrow {
           position: absolute;
           top: 50%;
           right: 16px;
-          margin-top: -9px; }
-      .menu-container > .menu .menu-submenu > ul {
-        height: 48px;
+          margin-top: -9px;
+          -webkit-transition: all 0.3s;
+          -moz-transition: all 0.3s;
+          -o-transition: all 0.3s;
+          transition: all 0.3s; }
+      .menu-container > .menu .menu-submenu > .menu-sub {
         -webkit-transition: all 0.3s;
         -moz-transition: all 0.3s;
         -o-transition: all 0.3s;
         transition: all 0.3s; }
-    .menu-container > .menu .menu-close > ul {
-      height: 0;
+        .menu-container > .menu .menu-submenu > .menu-sub .menu-sub-item {
+          display: inline-block;
+          width: 100%;
+          position: relative;
+          margin: 2px 0;
+          padding: 0 16px 0 40px;
+          height: 40px;
+          line-height: 40px;
+          color: rgba(0, 0, 0, 0.65); }
+          .menu-container > .menu .menu-submenu > .menu-sub .menu-sub-item:hover {
+            color: #1890ff; }
+        .menu-container > .menu .menu-submenu > .menu-sub .menu-item-selected {
+          color: #1890ff;
+          background-color: #e6f7ff; }
+          .menu-container > .menu .menu-submenu > .menu-sub .menu-item-selected:after {
+            content: "";
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            border-right: 3px solid #1890ff; }
+    .menu-container > .menu .menu-close > .menu-sub {
+      height: 0 !important;
       filter: alpha(opacity=0);
       -moz-opacity: 0;
       opacity: 0; }
+    .menu-container > .menu .menu-open .menu-submenu-arrow {
+      -webkit-transform: rotate(180deg);
+      -moz-transform: rotate(180deg);
+      -o-transform: rotate(180deg);
+      transform: rotate(180deg); }
+    .menu-container > .menu .menu-open .menu-sub-item.a {
+      color: rgba(0, 0, 0, 0.65); }
+    .menu-container > .menu .menu-open .menu-sub-item.a:hover {
+      color: #1890ff; }
