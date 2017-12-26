@@ -50,8 +50,9 @@
 开发：
 
 ```bash
-npm run dev
-打开 http://localhost:8000
+npm run build-css
+npm start
+打开 http://localhost:3000
 ```
 
 构建：
