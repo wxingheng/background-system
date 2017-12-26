@@ -1,0 +1,248 @@
+@import "./common.scss";
+
+$version: "1.1.1";
+// 六种主要的数据类型
+$number: 0;
+$string: '';
+$null: null;
+$boolean: false;
+// 数组 [[1], [2], [3], [4], [5]]
+$list1: 1, 2, 3, 4;
+// 数组 [[1], [2], [3], [4], [5]]
+$list2: (1) (2) (3) (4) (5);
+// 数组 [1, 2, 3, 4, 5]
+$list3: 1 2 3 4 5;
+$map: (
+    width: '100px'
+);
+
+// @debug 10em + 12em;
+// @warn 'warn directive';
+// @error 'error directive';
+
+
+// 混合指令 定义可重复的样式
+// 混合样式中也可以包含其他混合样式
+@mixin does-parent-exist {
+    @if & {
+        &:hover {
+            color: red;
+        }
+    } @else {
+        a {
+            color: red;
+        }
+    }
+}
+
+// 使用参数变量 … 声明（写在参数的最后方）告诉 Sass 将这些参数视为值列表处理
+@mixin box-shadow($shadows...) {
+    @include prefix(box-shadow, $shadows);
+}
+
+// 向混合样式中导入内容
+@mixin import-content {
+    .bg-1 {
+        @content
+    }
+}
+
+@function double-height($height) {
+    @return $height * 2;
+}
+
+// 定义一套样式并不是给某个元素用，而是只通过 @extend 指令使用
+div%extreme {
+    background-color: #ffe45c;
+}
+
+/* this css version is #{$version} */
+body {
+    // 局部变量
+    $weight: 400;
+    // 全局变量
+    // $weight: 400 !global;
+    $selector: '.bg-2';
+
+    padding: 0;
+    border: 0;
+    @include import-content {
+        &:before {
+            content: 'import-content';
+            color: #ffe45c;
+        }
+    }
+    @if 1 + 1 == 2 {margin: 0;}
+
+    // 属性嵌套
+    font: {
+        family: "Microsoft YaHei", "SimHei", "SimSun";
+        size: 2rem;
+        weight: $weight;
+    }
+
+    h1.notice {
+        color: #ffc0cb;
+        @include box-shadow(0px 4px 5px #666, 2px 6px 10px #999);
+    }
+
+    // 直接用.bg-1作为根节点 不用body
+    @at-root .bg-1 {
+        $box-shadow: 0px 4px 5px #666, 2px 6px 10px #999;
+
+        background-color: #0a0a0a;
+        height: 200px;
+        cursor: pointer;
+        @include opacity(0.5);
+        // 将一串值列表中的值逐条作为参数引用
+        @include box-shadow($box-shadow...);
+
+        // 父级选择器 &
+        &:hover {
+            background-color: #00a3f5;
+            // 将 @import 嵌套进 CSS 样式或者 @media 中
+            @import "common.scss";
+        }
+
+        &:after {
+            $content: '杀了他喂猪!';
+
+            content: $content;
+            color: #fff;
+        }
+
+        // & 必须作为选择器的第一个字符，其后可以跟随后缀生成复合的选择器
+        &-border {
+          border: 2px solid #00a65a;
+        }
+    }
+
+    // 插值语句 不做任何运算
+    #{$selector} {
+        $border-width: 10px 20px;
+        $font-size: 12px;
+        $line-height: 30px;
+
+        display: inline-block;
+        float: left;
+        width: (500px/2);
+        // width: (500/2)px;
+        height: 200px + 50px;
+        // background-color: #0b2e13;
+        background-color: #051702 + #061711;
+        // 算术运算不会作用于alpha值
+        // color: rgba(255, 255, 0, 0.75);
+        color: rgba(255, 0, 0, 0.75) + rgba(0, 255, 0, 0.75);
+        border-width: $border-width;
+        border-color: #0a0a0a;
+        border-style: solid;
+        // 插值语句 不做任何运算
+        font: #{$font-size}/#{$line-height};
+
+        &:after {
+            // 如果变量已经被赋值，不会再被重新赋值，但是如果变量还没有被赋值，则会被赋予新的值。
+            $color: #231231;
+            $color: #456789 !default;
+            $new_color: #935262 !default;
+
+            // 在有引号的文本字符串中使用 #{} 插值语句可以添加动态的值
+            content: 'i ate #{5 + 10} pies!';
+            color: $color;
+            background-color: $new_color;
+        }
+
+        &:before {
+            content: '#{$font-size + $line-height} ';
+            // 圆括号
+            color: (#111111 + #222222) * 3;
+        }
+    }
+
+    .bg-3 {
+        display: inline-block;
+        float: left;
+        height: 250px;
+        width: 250px;
+        background-color: #1c2d3f;
+
+        &:hover {
+            background-color: yellowgreen;
+        }
+
+        @media screen and (max-width: 1300px) {
+            // 不能继承媒体查询外面的样式 会报错
+            // @extend .bg-5;
+
+            background-color: #0f6ab4;
+
+            // without: media 会把样式放到媒体查外面 但是a标签的样式有依然属于.bg-3 因为@at-root没有修饰a
+            //a {
+            //    @at-root (without: media) {
+            //        color: red;
+            //    }
+            //}
+
+            // 报错
+            /*@at-root a {
+                (without: media){
+                    color: red;
+                }
+            }*/
+
+        }
+    }
+
+    .bg-4 {
+        background-color: #1b6d85;
+        // 不能继承媒体查询的样式 但是不会报错
+        @extend .bg-3;
+        // @extend:hover .bg-3:hover; // error
+
+        &:hover {
+            @extend .bg-3:hover;
+        }
+    }
+
+    .bg-5 {
+        @extend %extreme;
+
+        // 通过 !optional 声明 要求 @extend 不生成新选择器 不生产新选择器 就不会报错
+        &>a {
+            // @extend .notice !optional; // 继承失败 没有效果
+            // @extend .notice; // 报错 会生成 .bg-5>a.notice 但是.notice是h1标签  所以会报错
+            @extend h1.notice;
+        }
+    }
+
+    .ul {
+        $index: 3;
+
+        @for $i from 1 through 4 {
+            .li-#{$i}:before {
+                content: 'li#{$i}';
+            }
+        }
+
+        @for $i from 1 to 4 {
+            @if $i % 2 == 0 {
+                .li-#{$i} {
+                    background-color: #1c2d3f;
+                }
+            }
+        }
+
+        @each $element in $list1 {
+            // @debug '$element ' + $element;
+            .li-#{$element}:after {
+                content: 'after-#{$element}';
+            }
+        }
+
+        @while $index > 0 {
+            .li-#{$index} {
+                background-color: #ffe45c;
+            }
+            $index: $index - 2;
+        }
+    }
+}

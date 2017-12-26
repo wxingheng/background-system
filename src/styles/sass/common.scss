@@ -1,0 +1,16 @@
+@mixin prefix($property, $value...){
+  -webkit-#{$property}: $value;
+     -moz-#{$property}: $value;
+       -o-#{$property}: $value;
+          #{$property}: $value;
+}
+
+@mixin opacity($value){
+  filter: alpha(opacity=#{$value*100});
+  -moz-opacity:#{$value};
+       opacity:#{$value};
+}
+
+@mixin transition($value...) {
+  @include prefix(transition, $value);
+}

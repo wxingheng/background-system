@@ -1,3 +1,46 @@
-.menu {
+@import "./sass/common.scss";
 
+.menu-container{
+  width: 256px;
+  cursor: pointer;
+
+  & > .menu {
+    border-right: 1px solid #e8e8e8;
+
+    .menu-submenu {
+      position: relative;
+
+      .menu-submenu-title {
+        position: relative;
+        padding: 0 16px;
+        margin: 4px 0;
+        height: 40px;
+        line-height: 40px;
+        color: rgba(0, 0, 0, 0.65);
+
+        & a {
+            color: rgba(0, 0, 0, 0.65);
+        }
+
+        .menu-submenu-arrow {
+            position: absolute;
+            top: 50%;
+            right: 16px;
+            margin-top: -9px;
+        }
+      }
+
+      & > .ant-menu-sub {
+        height: 48px;
+        @include transition(all .3s);
+      }
+    }
+
+    .menu-close {
+      & > .ant-menu-sub {
+        height: 0;
+        @include opacity(0);
+      }
+    }
+  }
 }

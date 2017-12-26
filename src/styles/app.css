@@ -1,2 +1,17 @@
-.test > h2 {
-  background-color: green; }
+html {
+  margin: 0;
+  padding: 0;
+  border: 0; }
+  html > body {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    overflow-x: hidden; }
+    html > body ul, html > body li {
+      list-style: none; }
+    html > body a:hover {
+      text-decoration: none;
+      cursor: pointer; }
+
+.ml-10 {
+  margin-left: 10px; }

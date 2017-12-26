@@ -1,7 +1,7 @@
 /**
  * Created by roger on 25/12/2017.
  */
-import React from 'react';
+import React, { Component } from 'react';
 import {
     BrowserRouter as Router,
     Route,
@@ -54,29 +54,53 @@ const Topics = ({ match }) => (
     </div>
 );
 
-const BasicExample = () => (
-    <Router>
-        <div>
-            <ul className="menu">
-                <li className="sub-menu">
-                    <div className="menu-submenu-title">
-                        <span>
-                            <i></i>
-                            <span><Link to="/">Home</Link></span>
-                        </span>
-                        <i></i>
+class BasicExample extends Component {
+    constructor() {
+        super();
+        this.handleOpen = this.handleOpen.bind(this);
+    }
+
+    handleOpen(e) {
+        let patent = e.target.parentElement;
+
+        if (patent.className.indexOf('menu-close') > -1) {
+            patent.className = patent.className.replace(/menu-close/g, 'menu-open');
+        } else {
+            patent.className = patent.className.replace(/menu-open/g, 'menu-close');
+        }
+    }
+
+    
+
+    render() {
+        return (
+            <Router>
+                <div>
+                    <div className="menu-container">
+                        <ul className="menu">
+                            <li className="menu-submenu menu-close">
+                                <div className="menu-submenu-title" onClick={this.handleOpen}>
+                                <span>
+                                    <i className="fa fa-life-ring"></i>
+                                    <span className="ml-10"><Link to="/">Home</Link></span>
+                                </span>
+                                    <i className="fa fa-chevron-down menu-submenu-arrow"></i>
+                                </div>
+                                <ul className="ant-menu-sub">
+                                    <li><Link to="/about">About</Link></li>
+                                    <li><Link to="/topics">Topics</Link></li>
+                                </ul>
+                            </li>
+                        </ul>
                     </div>
-                </li>
-                <li><Link to="/about">About</Link></li>
-                <li><Link to="/topics">Topics</Link></li>
-            </ul>
+                    <hr/>
 
-            <hr/>
-
-            <Route exact path="/" component={Home}/>
-            <Route path="/about" component={About}/>
-            <Route path="/topics" component={Topics}/>
-        </div>
-    </Router>
-)
-export default BasicExample
+                    <Route exact path="/" component={Home}/>
+                    <Route path="/about" component={About}/>
+                    <Route path="/topics" component={Topics}/>
+                </div>
+            </Router>
+        )
+    }
+}
+export default BasicExample;
