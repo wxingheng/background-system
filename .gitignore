@@ -3,6 +3,10 @@
 # webstorm file
 /.idea
 
+# scss and map file
+src/styles/*.scss
+src/styles/*.map
+
 # dependencies
 /node_modules
 

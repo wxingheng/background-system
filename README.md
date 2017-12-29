@@ -17,6 +17,7 @@
 │ ├── /routes/       # 路由组件
 │ │ └── app.js       # 路由入口
 │ ├── /models/       # 数据模型
+│ ├── /examples/     # redux或插件例子
 │ ├── /services/     # 数据接口
 │ ├── /themes/       # 项目样式
 │ ├── /mock/         # 数据mock

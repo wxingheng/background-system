@@ -1,0 +1,99 @@
+@charset "UTF-8";
+body div.bg-5 {
+  background-color: #ffe45c; }
+
+/* this css version is 1.1.1 */
+body {
+  padding: 0;
+  border: 0;
+  margin: 0;
+  font-family: "Microsoft YaHei", "SimHei", "SimSun";
+  font-size: 2rem;
+  font-weight: 400; }
+  body .bg-1:before {
+    content: 'import-content';
+    color: #ffe45c; }
+  body h1.notice, body .bg-5 > a {
+    color: #ffc0cb;
+    -webkit-box-shadow: 0px 4px 5px #666, 2px 6px 10px #999;
+    -moz-box-shadow: 0px 4px 5px #666, 2px 6px 10px #999;
+    -o-box-shadow: 0px 4px 5px #666, 2px 6px 10px #999;
+    box-shadow: 0px 4px 5px #666, 2px 6px 10px #999; }
+  .bg-1 {
+    background-color: #0a0a0a;
+    height: 200px;
+    cursor: pointer;
+    filter: alpha(opacity=50);
+    -moz-opacity: 0.5;
+    opacity: 0.5;
+    -webkit-box-shadow: 0px 4px 5px #666, 2px 6px 10px #999;
+    -moz-box-shadow: 0px 4px 5px #666, 2px 6px 10px #999;
+    -o-box-shadow: 0px 4px 5px #666, 2px 6px 10px #999;
+    box-shadow: 0px 4px 5px #666, 2px 6px 10px #999; }
+    .bg-1:hover {
+      background-color: #00a3f5; }
+    .bg-1:after {
+      content: "杀了他喂猪!";
+      color: #fff; }
+    .bg-1-border {
+      border: 2px solid #00a65a; }
+  body .bg-2 {
+    display: inline-block;
+    float: left;
+    width: 250px;
+    height: 250px;
+    background-color: #0b2e13;
+    color: rgba(255, 255, 0, 0.75);
+    border-width: 10px 20px;
+    border-color: #0a0a0a;
+    border-style: solid;
+    font: 12px/30px; }
+    body .bg-2:after {
+      content: "i ate 15 pies!";
+      color: #231231;
+      background-color: #935262; }
+    body .bg-2:before {
+      content: "42px ";
+      color: #999999; }
+  body .bg-3, body .bg-4 {
+    display: inline-block;
+    float: left;
+    height: 250px;
+    width: 250px;
+    background-color: #1c2d3f; }
+    body .bg-3:hover, body .bg-4:hover {
+      background-color: yellowgreen; }
+    @media screen and (max-width: 1300px) {
+      body .bg-3, body .bg-4 {
+        background-color: #0f6ab4;
+        /*@at-root a {
+            (without: media){
+                color: red;
+            }
+        }*/ } }
+  body .bg-4 {
+    background-color: #1b6d85; }
+  body .ul .li-1:before {
+    content: "li1"; }
+  body .ul .li-2:before {
+    content: "li2"; }
+  body .ul .li-3:before {
+    content: "li3"; }
+  body .ul .li-4:before {
+    content: "li4"; }
+  body .ul .li-2 {
+    background-color: #1c2d3f; }
+  body .ul .li-1:after {
+    content: "after-1"; }
+  body .ul .li-2:after {
+    content: "after-2"; }
+  body .ul .li-3:after {
+    content: "after-3"; }
+  body .ul .li-4:after {
+    content: "after-4"; }
+  body .ul .li-3 {
+    background-color: #ffe45c; }
+  body .ul .li-1 {
+    background-color: #ffe45c; }
+
+/*# sourceMappingURL=main.css.map */

@@ -8,6 +8,8 @@ import {
     Link
 } from 'react-router-dom';
 
+import PropTypesExample from '../examples/prop_types'
+
 const Home = () => (
     <div>
         <h2>Home</h2>
@@ -69,11 +71,9 @@ class BaseRouter extends Component {
                 ]
             },
             {
-                header: 'Copy',
+                header: 'examples',
                 items: [
-                    {name: 'home', path: '/'},
-                    {name: 'about', path: '/about'},
-                    {name: 'topics', path: '/topics'}
+                    {name: 'PropTypesExample', path: '/examples/propTypes'},
                 ]
             }
         ];
@@ -129,6 +129,7 @@ class BaseRouter extends Component {
                     <Route exact path="/" component={Home}/>
                     <Route path="/about" component={About}/>
                     <Route path="/topics" component={Topics}/>
+                    <Route path="/examples/propTypes" component={PropTypesExample}/>
                 </div>
             </Router>
         )
