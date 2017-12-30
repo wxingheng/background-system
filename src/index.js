@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore, combineReducers, applyMiddleware } from 'redux'
+import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 
 import App from './routes/app';
@@ -21,7 +21,7 @@ import './styles/css/bootstrap.4.0.min.css';
 //
 // let todoApp = combineReducers(reducer);
 // const store = createStore(todoApp, applyMiddleware(logger));
-const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 ReactDOM.render(
     <Provider store={store}>
