@@ -124,12 +124,13 @@ class BaseRouter extends Component {
                             {router}
                         </ul>
                     </div>
-                    <hr/>
 
-                    <Route exact path="/" component={Home}/>
-                    <Route path="/about" component={About}/>
-                    <Route path="/topics" component={Topics}/>
-                    <Route path="/examples/propTypes" component={PropTypesExample}/>
+                    <div className="content-container">
+                        <Route exact path="/" component={Home}/>
+                        <Route path="/about" component={About}/>
+                        <Route path="/topics" component={Topics}/>
+                        <Route path="/examples/propTypes" component={PropTypesExample}/>
+                    </div>
                 </div>
             </Router>
         )

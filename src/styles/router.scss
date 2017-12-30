@@ -1,6 +1,8 @@
 @import "./sass/common.scss";
 
 .menu-container{
+  position: absolute;
+  left: 0;
   width: 256px;
   cursor: pointer;
 
@@ -86,4 +88,9 @@
       }
     }
   }
+}
+
+.content-container {
+  margin-left: 256px;
+  padding: 10px;
 }

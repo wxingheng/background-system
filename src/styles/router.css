@@ -1,4 +1,6 @@
 .menu-container {
+  position: absolute;
+  left: 0;
   width: 256px;
   cursor: pointer; }
   .menu-container > .menu {
@@ -63,5 +65,9 @@
       color: rgba(0, 0, 0, 0.65); }
     .menu-container > .menu .menu-open .menu-sub-item.a:hover {
       color: #1890ff; }
+
+.content-container {
+  margin-left: 256px;
+  padding: 10px; }
 
 /*# sourceMappingURL=router.css.map */
