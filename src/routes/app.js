@@ -9,6 +9,7 @@ import {
 } from 'react-router-dom';
 
 import PropTypesExample from '../examples/prop_types'
+import SyncReactReduxExample from '../examples/sync_react_redux/components'
 
 const Home = () => (
     <div>
@@ -74,6 +75,7 @@ class BaseRouter extends Component {
                 header: 'examples',
                 items: [
                     {name: 'PropTypesExample', path: '/examples/propTypes'},
+                    {name: 'syncReactReduxExample', path: '/examples/syncReactRedux'},
                 ]
             }
         ];
@@ -130,6 +132,7 @@ class BaseRouter extends Component {
                         <Route path="/about" component={About}/>
                         <Route path="/topics" component={Topics}/>
                         <Route path="/examples/propTypes" component={PropTypesExample}/>
+                        <Route path="/examples/syncReactRedux" component={SyncReactReduxExample}/>
                     </div>
                 </div>
             </Router>
