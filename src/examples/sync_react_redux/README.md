@@ -6,7 +6,7 @@
 - 为什么需要[redux][redux]?
 - [redux][redux]如何工作?
 
-![](https://github.com/roger-Guo/background-system/assets/react-redux.png)
+![](https://github.com/roger-Guo/background-system/tree/master/assets/react-redux.png)
 
 ## License
 [MIT][MIT]
