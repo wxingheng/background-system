@@ -8,7 +8,6 @@
 
 ![](https://github.com/roger-Guo/background-system/blob/master/assets/react-redux.png)
 
-
 ## License
 [MIT][MIT]
 
