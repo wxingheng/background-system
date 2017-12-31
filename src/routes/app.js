@@ -8,8 +8,10 @@ import {
     Link
 } from 'react-router-dom';
 
-import PropTypesExample from '../examples/prop_types'
-import SyncReactReduxExample from '../examples/sync_react_redux/components'
+import PropTypesExample from '../examples/prop_types';
+import SyncReactReduxExample from '../examples/sync_react_redux/components';
+
+import utils from '../utils'
 
 const Home = () => (
     <div>
@@ -81,14 +83,15 @@ class BaseRouter extends Component {
         ];
     }
 
+    // ?todo 这个e.target为什么不是绑定该函数的元素
     handleOpen(e) {
-        let patent = e.target.parentElement;
+      let patent = utils.getClosestElement(e.target, 'class::menu-submenu');
 
-        if (patent.className.indexOf('menu-close') > -1) {
-            patent.className = patent.className.replace(/menu-close/g, 'menu-open');
-        } else {
-            patent.className = patent.className.replace(/menu-open/g, 'menu-close');
-        }
+      if (patent.className.indexOf('menu-close') > -1) {
+          patent.className = patent.className.replace(/menu-close/g, 'menu-open');
+      } else {
+          patent.className = patent.className.replace(/menu-open/g, 'menu-close');
+      }
     }
 
     handleSelected(e) {
