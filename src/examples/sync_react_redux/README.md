@@ -30,6 +30,7 @@
         *  负责输入逻辑, 这个方法订阅了Store, 每当state更新的时候，就会自动执行。
     * mapDispatchToProps
         *  负责输出逻辑, 它定义了哪些用户的操作应该当作 Action, 传给 Store。它可以是一个函数, 也可以是一个对象。
+        
 ![](https://github.com/roger-Guo/background-system/blob/master/assets/react-redux.png)
 
 ## License
