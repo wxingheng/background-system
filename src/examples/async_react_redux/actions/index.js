@@ -35,30 +35,44 @@ export const receivePosts = (subreddit, json) => ({
 
 // 获取请求 第一个参数是请求的资源
 const fetchPost = subreddit => dispatch => {
+  // 更新state 查看reducer
   dispatch(requestPosts(subreddit));
 
+  // 获取数据
   return fetch(`https://www.reddit.com/r/${subreddit}.json`)
       .then(response => response.json())
+      // 更新state
       .then(json => dispatch(receivePosts(subreddit, json)))
 };
 
 // 是否应该获取post
 const shouldFetchPosts = (state, subreddit) => {
+  // 设置state 查看当前state的状态
   const posts = state.postsBySubreddit[subreddit];
 
+  // 如果state为空对象(没有数据)
   if (!posts) {
     return true;
   }
 
+  // 如果正在发生请求
   if (posts.isFetching) {
     return false;
   }
 
+  // 数据是否有效
   return posts.didInvalidate;
 };
 
+/**
+ * @desc thunk
+ * @param subreddit
+ * dispatch
+ * getState 获取当前的状态
+ */
 export const fetchPostsIfNeeded = subreddit => (dispatch, getState) => {
   if (shouldFetchPosts(getState(), subreddit)) {
+    // thunk
     return dispatch(fetchPost(subreddit));
   }
 };

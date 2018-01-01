@@ -36,6 +36,7 @@ class App extends Component {
 
     const { dispatch, selectedSubreddit } = this.props;
 
+    // 将数据设置为无效 然后发生请求
     dispatch(invalidateSubreddit(selectedSubreddit));
     dispatch(fetchPostsIfNeeded(selectedSubreddit));
   }
