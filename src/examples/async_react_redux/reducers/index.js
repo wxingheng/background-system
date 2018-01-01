@@ -2,6 +2,8 @@
  * Created by roger on 31/12/2017.
  */
 import { combineReducers } from 'redux';
+import { todos } from '../../sync_react_redux/reducers/todos'
+import { visibilityFilter } from '../../sync_react_redux/reducers/visibilityFilter'
 import {
   REQUEST_POSTS,
   RECEIVE_POSTS,
@@ -64,7 +66,9 @@ const postsBySubreddit = (state = {}, action) => {
 
 const rootReducer = combineReducers({
   postsBySubreddit,
-  selectedSubreddit
+  selectedSubreddit,
+  todos,
+  visibilityFilter
 });
 
 export default rootReducer;

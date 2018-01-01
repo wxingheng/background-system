@@ -4,7 +4,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-
 class Picker extends Component {
   render() {
     return (
