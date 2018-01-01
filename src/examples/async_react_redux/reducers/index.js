@@ -22,10 +22,10 @@ const selectedSubreddit = (state = 'frontend', action) => {
   }
 };
 
-// 根据action设置state
+// 根据action设置state的状态
 const posts = (state = {
-  isFetching: false,    // 是否正在获取数据
-  didInvalidate: false, // 标志数据是否过期
+  isFetching: false,    // 没有发生请求
+  didInvalidate: false, // 数据没有过期(数据有效)
   items: []
 }, action) => {
   switch (action.type) {
@@ -56,7 +56,7 @@ const posts = (state = {
   }
 };
 
-// 根据action设置state
+// 根据action设置state 每一个reducer只是管理部分state
 const postsBySubreddit = (state = {}, action) => {
   switch (action.type) {
     case INVALIDATE_SUBREDDIT:

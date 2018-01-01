@@ -47,10 +47,10 @@ const fetchPost = subreddit => dispatch => {
 
 // 是否应该获取post
 const shouldFetchPosts = (state, subreddit) => {
-  // 设置state 查看当前state的状态
+  // 设置state 查看当前state的状态 posts代表请求对象
   const posts = state.postsBySubreddit[subreddit];
 
-  // 如果state为空对象(没有数据)
+  // 如果还没有发生请求
   if (!posts) {
     return true;
   }
@@ -60,7 +60,7 @@ const shouldFetchPosts = (state, subreddit) => {
     return false;
   }
 
-  // 数据是否有效
+  // 请求到的数据是否还有效
   return posts.didInvalidate;
 };
 

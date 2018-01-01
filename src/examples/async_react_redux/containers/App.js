@@ -82,12 +82,14 @@ App.PropTypes = {
   dispatch: PropTypes.func.isRequired
 };
 
+// state更新
 const mapStateToProps = state => {
   const { selectedSubreddit, postsBySubreddit } = state;
   const {
     isFetching,
     lastUpdated,
     items: posts
+  // 根据已选择的subreddit请求的数据 如果请求还没有成功 则显示还在请求
   } = postsBySubreddit[selectedSubreddit] || {
     isFetching: true,
     items: []
