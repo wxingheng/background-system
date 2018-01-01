@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
-
+import thunk from 'redux-thunk'
+import { createLogger } from 'redux-logger'
 import App from './routes/app';
-import reducer from './examples/sync_react_redux/reducers'
+import reducer from './examples/async_react_redux/reducers'
 import registerServiceWorker from './registerServiceWorker';
 
 import './styles/app.css';
@@ -21,7 +22,15 @@ import './styles/css/bootstrap.4.0.min.css';
 //
 // let todoApp = combineReducers(reducer);
 // const store = createStore(todoApp, applyMiddleware(logger));
-const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const middleware = [ thunk ];
+
+if (process.env.NODE_ENV !== 'production') {
+  middleware.push(createLogger())
+}
+const store = createStore(
+  reducer,
+  applyMiddleware(...middleware)
+);
 
 ReactDOM.render(
     <Provider store={store}>

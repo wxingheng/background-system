@@ -10,6 +10,7 @@ import {
 
 import PropTypesExample from '../examples/prop_types';
 import SyncReactReduxExample from '../examples/sync_react_redux/components';
+import AsyncReactReduxExample from '../examples/async_react_redux/containers/App';
 
 import utils from '../utils'
 
@@ -78,6 +79,7 @@ class BaseRouter extends Component {
                 items: [
                     {name: 'PropTypesExample', path: '/examples/propTypes'},
                     {name: 'syncReactReduxExample', path: '/examples/syncReactRedux'},
+                    {name: 'asyncReactReduxExample', path: '/examples/asyncReactRedux'},
                 ]
             }
         ];
@@ -136,6 +138,7 @@ class BaseRouter extends Component {
                         <Route path="/topics" component={Topics}/>
                         <Route path="/examples/propTypes" component={PropTypesExample}/>
                         <Route path="/examples/syncReactRedux" component={SyncReactReduxExample}/>
+                        <Route path="/examples/asyncReactRedux" component={AsyncReactReduxExample}/>
                     </div>
                 </div>
             </Router>
